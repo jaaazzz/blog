@@ -1,0 +1,53 @@
+<include file="Common/head" />
+	<link rel="stylesheet" href="__PUBLIC__/Css/show.css" />
+<include file="Common/top" />
+<!--主体-->
+	<div class='main'>
+		<div class='main-left'>
+			<div class='location'>
+				<a href="__ROOT__">首页</a>>
+				<foreach name="parent" item="v">
+				<a href="{:U('/list-'.$v['id'])}">{$v.name}</a><if condition="$key neq $count">&gt;</if>
+				</foreach>
+			</div>
+			<div class="title">
+				<p>{$blog.title}</p>
+				<div>
+					<span class='fl'>发布于：{$blog.time|date='Y年m月d日', ###}</span>
+					<span class='fr'>已被阅读{$blog.click}次</span>
+					<!--
+					<span class='fr' id="js_click" data-url="{:U(MODULE_NAME.'/Show/click', array('id' => $blog['id']))}">已被阅读<strong class="click_num"></strong>次</span>
+					-->
+				</div>
+			</div>
+			<div class='content'>
+				{$blog.content|htmlspecialchars_decode}
+			</div>
+		</div>
+        <div class='comment'>
+            <div class='comment_list'>
+                <p>{$comment[0]['content']}</p>
+            </div>
+            <div class='comment_add'>
+                <form action="" method='post'>
+					<textarea rows="4" cols="50" name="comment_content">
+请在此处输入评论...</textarea>
+					<input type="submit" name='comment' value='评论'/>
+				</form>
+            </div>
+        </div>
+	<include file="Common/right" />
+	</div>
+{/*	
+<literal>
+<script type="text/javascript">
+	$(function(){
+		$.post($('#js_click').data('url'), function(msg){
+			$('.click_num').html(msg);
+		});
+	});
+</script>
+</literal>
+*/}
+
+<include file="Common/foot" />

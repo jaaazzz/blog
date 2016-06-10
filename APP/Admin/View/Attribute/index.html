@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<css href="__PUBLIC__/Css/public.css" />
+</head>
+<body>
+	<table class="table">
+		<tr>
+			<th>ID</th>
+			<th>属性名称</th>
+			<th>颜色</th>
+			<th>操作</th>
+		</tr>
+		<foreach name="attr" item="v">
+		<tr>
+			<td>{$v.id}</td>
+			<td>{$v.name}</td>
+			<td><div style="width:30px; height:30px; background:{$v.color}"></div></td>
+			<td>
+				[<a href="#">修改</a>]
+				[<a href="{:U(MODULE_NAME.'/Attribute/deleteAttr', array('id' => $v['id']))}" onclick="return confirm('你确定要删除？')">删除</a>]
+			</td>
+		</tr>
+		</foreach>
+	</table>
+</body>
+</html>

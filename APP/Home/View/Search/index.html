@@ -1,0 +1,15 @@
+	<include file="Common/head" />
+	<link rel="stylesheet" href="__PUBLIC__/Css/index.css" />
+	<include file="Common/top" />
+<!--主体-->
+	<div class='main'>
+		<div class='main-left'>
+			<dl>
+				<foreach name="search" item="v">
+				<dd><a href="{:U('/show-'.$v['id'])}">{$v.title}</a></dd>
+				</foreach>
+			</dl>
+		</div>
+		<include file="Common/right" />
+	</div>
+<include file="Common/foot" />
